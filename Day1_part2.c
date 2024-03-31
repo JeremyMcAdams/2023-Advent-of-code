@@ -51,14 +51,7 @@ int right_number_check(char string[]){
             break;
         }
     }
-    if (pointer_array[1] != 0){
-        for (int i = 0; i < 9; ++i){
-            if (pointer_array[0] < pointer_array[i]){
-                pointer_array[0] = pointer_array[i];
-            }
-        }
-    }
-    
+   
     if (pointer_array[0] != 0){
         for (int i = 0; i < 9; ++i){
             if (strncmp(pointer_array[0], numbers[i], strlen(numbers[i])) == 0){
