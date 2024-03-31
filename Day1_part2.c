@@ -120,7 +120,6 @@ int main(){
                 if (coordinates[1] == 0){
                     coordinates[1] = coordinates[0];
                 }
-                printf("Line %d,  number 1: %d number2: %d coordinates[0]: %d coordinates[1]: %d\n", line_count, number1, number2, coordinates[0], coordinates[1]);
                 sum += ((coordinates[0] * 10) + coordinates[1]);
                 coordinates[0] = 0;
                 coordinates[1] = 0;
