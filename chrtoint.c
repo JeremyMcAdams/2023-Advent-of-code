@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "strnum.h"
 long int power_10(int num, int exponent){
-    int base = 10;
+    const int base = 10;
     long long int number = 1;
     for (int i = 0; i < exponent; i++){
         number *= base;
@@ -12,11 +12,12 @@ long int power_10(int num, int exponent){
 }
 
 int chrtoint(char string[]){
-    int str_len;
-    char* ptr;
-    for(ptr = string; *ptr; ++ptr);
-    str_len = ptr - string;
+    //int str_len;
+    //char* ptr;
+    //for(ptr = string; *ptr; ++ptr);
+    //str_len = ptr - string;
     int sign = 0;
+    int i = 0;
     int iter = 0;
     int buffer_size = 1;
     int *num_array = malloc(sizeof(int));
@@ -25,11 +26,7 @@ int chrtoint(char string[]){
         printf("Errno -1: Memory allocation failed");
         return -1;
     }
-    for (int i = 0; i < str_len; i++){
-        if (string[i] == '\0'){
-            break;
-        }
-        
+    for (char* character = string; *character; ++character){
         if (i == buffer_size){
             buffer_size += 1;
             num_array = realloc(num_array, buffer_size * sizeof(int));
@@ -39,11 +36,11 @@ int chrtoint(char string[]){
                 return -1;
             }
         }
-        if (string[i] == '-'){
+        if (*character == '-'){
             sign = 1;
         }
-        else if (string[i] >='0' && string[i] <= '9'){
-            num_array[i] = string[i] - 48;
+        else if (*character >='0' && *character <= '9'){
+            num_array[i] = *character - 48;
         }
         else {
             num_array[i] = -1;
@@ -54,6 +51,7 @@ int chrtoint(char string[]){
             free(num_array);
             return -2;
         }
+        i++;
     }
     //num_storage[buffer_size];
     int number = 0;
@@ -70,5 +68,6 @@ int chrtoint(char string[]){
 
 int main(){
     char test[] = "-1324";
-    printf("%d\n", chrtoint(test));
+    int number = chrtoint(test);
+    printf("%d\n", number);
 }
