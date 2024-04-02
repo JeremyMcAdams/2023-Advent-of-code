@@ -12,10 +12,6 @@ long int power_10(int num, int exponent){
 }
 
 int chrtoint(char string[]){
-    //int str_len;
-    //char* ptr;
-    //for(ptr = string; *ptr; ++ptr);
-    //str_len = ptr - string;
     int sign = 0;
     int i = 0;
     int iter = 0;
@@ -53,7 +49,6 @@ int chrtoint(char string[]){
         }
         i++;
     }
-    //num_storage[buffer_size];
     int number = 0;
     for (int i = buffer_size -1 ; i >= 0; i--){
         number += power_10(num_array[iter], i); 
